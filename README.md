@@ -52,7 +52,8 @@ This repository contains the documentation for an **Online Auction Database Syst
      - Rating of the other party participating in the transaction (scale: 1-10)
      - Comment
 
-![EER Online_Aucation](https://github.com/hazemAzzam/Online_Auction/assets/61450444/ccc7be01-3737-4a16-8c1a-cd8c3b28f62a)
+![EER Online_Aucation](https://github.com/hazemAzzam/Online_Auction/assets/61450444/f6340d71-45bf-4bc2-a9c5-1aca64d35faa)
+
 
 ## License
 

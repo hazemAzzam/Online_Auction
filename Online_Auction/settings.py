@@ -114,6 +114,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = False
+
+CORS_ALLOW_ALL_ORIGINS = True
+CSRF_TRUSTED_ORIGINS = ['https://onlineauction-production.up.railway.app/', 'https://onlineauction-production.up.railway.app']
+
 ROOT_URLCONF = 'Online_Auction.urls'
 
 TEMPLATES = [

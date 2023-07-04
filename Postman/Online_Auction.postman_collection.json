@@ -700,7 +700,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"{{$randomVerb}}\",\r\n    \"description\": \"{{$randomLoremParagraph}}\",\r\n    \"starting_bid\": \"{{$randomPrice}}\",\r\n    \"bidding_increment\": \"{{$randomPrice}}\",\r\n    \"start_date\": \"{{randomDate}}\",\r\n    \"end_date\": \"{{randomDate}}\",\r\n    \"category\": \"\",\r\n    \"seller\": \"{{randomSeller}}\"\r\n}",
+							"raw": "{\r\n    \"title\": \"{{$randomVerb}}\",\r\n    \"description\": \"{{$randomLoremParagraph}}\",\r\n    \"starting_bid\": 1000,\r\n    \"bidding_increment\": 100,\r\n    \"start_date\": \"2023-07-05T00:00\",\r\n    \"end_date\": \"2023-07-06T00:00\",\r\n    \"category\": \"Keyboards\",\r\n    \"seller\": \"{{randomSeller}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -720,6 +720,187 @@
 							"path": [
 								"api",
 								"items",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list running",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{api_key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Access-Token",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/items/running/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"items",
+								"running",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list pending",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{api_key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Access-Token",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/items/pending/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"items",
+								"pending",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list closed",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{api_key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Access-Token",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/items/closed/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"items",
+								"closed",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve item",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{api_key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Access-Token",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/items/7/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"items",
+								"7",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "end bid",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{api_key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Access-Token",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/items/2/end_bid/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"items",
+								"2",
+								"end_bid",
 								""
 							]
 						}
@@ -784,7 +965,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Modem\",\r\n    \"under\": \"Computer\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Keyboards\",\r\n    \"under\": \"Accessories\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -804,6 +985,120 @@
 							"path": [
 								"api",
 								"categories",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bids",
+			"item": [
+				{
+					"name": "create bid",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{api_key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Access-Token",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"buyer\": \"{{randomBuyer}}\",\r\n    \"item\": 7,\r\n    \"price\": 1800\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/bids/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"bids",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete bid",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/bids/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"bids",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Winners",
+			"item": [
+				{
+					"name": "list winners",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{api_key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Access-Token",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/winners/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"winners",
 								""
 							]
 						}
@@ -865,7 +1160,43 @@
 					"}",
 					"",
 					"const randomDate = generateRandomDate();",
-					"pm.environment.set(\"randomDate\", randomDate);"
+					"pm.environment.set(\"randomDate\", randomDate);",
+					"",
+					"",
+					"function getRandomBuyer() {",
+					"    return new Promise((resolve, reject) => {",
+					"        pm.sendRequest({",
+					"            url: \"http://127.0.0.1:8000/api/buyers/\",",
+					"            method: \"GET\",",
+					"            header: {",
+					"                \"X-Api-key\": pm.globals.get(\"api_key\"),",
+					"                \"X-Access-Token\": \"Bearer \" + pm.globals.get(\"access_token\"),",
+					"            }",
+					"        }, function(err, response) {",
+					"            if (err) {",
+					"                console.log(err)",
+					"            } else {",
+					"                var jsonData = response.json();",
+					"                console.log(jsonData)",
+					"                var idData = jsonData.map(function(data) {",
+					"                    return data.id;",
+					"                });",
+					"                var randomId = idData[Math.floor(Math.random() * idData.length)]",
+					"                resolve(randomId);",
+					"            }",
+					"        })",
+					"    })",
+					"}",
+					"",
+					"getRandomBuyer()",
+					"    .then(randomBuyerId => {",
+					"        pm.environment.set(\"randomBuyer\", randomBuyerId);",
+					"    })",
+					"    .catch(error => {",
+					"        console.log(error);",
+					"    })",
+					"",
+					""
 				]
 			}
 		},

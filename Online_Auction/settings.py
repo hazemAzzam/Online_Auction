@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'address',
     'buyer',
     'seller',
+    'item',
+    'category',
 ]
 
 REST_FRAMEWORK = {

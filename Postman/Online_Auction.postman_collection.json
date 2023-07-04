@@ -643,6 +643,240 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Items",
+			"item": [
+				{
+					"name": "list items",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{api_key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Access-Token",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/items/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"items",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{api_key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Access-Token",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"{{$randomVerb}}\",\r\n    \"description\": \"{{$randomLoremParagraph}}\",\r\n    \"starting_bid\": \"{{$randomPrice}}\",\r\n    \"bidding_increment\": \"{{$randomPrice}}\",\r\n    \"start_date\": \"{{randomDate}}\",\r\n    \"end_date\": \"{{randomDate}}\",\r\n    \"category\": \"\",\r\n    \"seller\": \"{{randomSeller}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/items/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"items",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "list categories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{api_key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Access-Token",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/categories/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"categories",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{api_key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Access-Token",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Modem\",\r\n    \"under\": \"Computer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/categories/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"categories",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"function getRandomSeller() {",
+					"    return new Promise((resolve, reject) => {",
+					"        pm.sendRequest({",
+					"            url: \"http://127.0.0.1:8000/api/sellers/\",",
+					"            method: \"GET\",",
+					"            header: {",
+					"                \"X-Api-key\": pm.globals.get(\"api_key\"),",
+					"                \"X-Access-Token\": \"Bearer \" + pm.globals.get(\"access_token\"),",
+					"            }",
+					"        }, function(err, response) {",
+					"            if (err) {",
+					"                console.log(err)",
+					"            } else {",
+					"                var jsonData = response.json();",
+					"                console.log(jsonData)",
+					"                var idData = jsonData.map(function(data) {",
+					"                    return data.id;",
+					"                });",
+					"                var randomId = idData[Math.floor(Math.random() * idData.length)]",
+					"                resolve(randomId);",
+					"            }",
+					"        })",
+					"    })",
+					"}",
+					"",
+					"getRandomSeller()",
+					"    .then(randomSellerId => {",
+					"        pm.environment.set(\"randomSeller\", randomSellerId);",
+					"    })",
+					"    .catch(error => {",
+					"        console.log(error);",
+					"    })",
+					"",
+					"function generateRandomDate() {",
+					"    const start = new Date(1970, 0, 1); // Start date (e.g., January 1, 1970)",
+					"    const end = new Date(); // Current date (or any other desired end date)",
+					"    const randomTimestamp = start.getTime() + Math.random() * (end.getTime() - start.getTime());",
+					"    const randomDate = new Date(randomTimestamp);",
+					"    const year = randomDate.getFullYear();",
+					"    const month = String(randomDate.getMonth() + 1).padStart(2, '0'); // Month is zero-based, so we add 1 and pad with leading zero if necessary",
+					"    const day = String(randomDate.getDate()).padStart(2, '0'); // Pad with leading zero if necessary",
+					"",
+					"    return `${year}-${month}-${day}`;",
+					"}",
+					"",
+					"const randomDate = generateRandomDate();",
+					"pm.environment.set(\"randomDate\", randomDate);"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }

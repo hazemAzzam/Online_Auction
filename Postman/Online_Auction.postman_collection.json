@@ -78,171 +78,6 @@
 			]
 		},
 		{
-			"name": "Members",
-			"item": [
-				{
-					"name": "create member",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "X-Api-Key",
-								"value": "{{api_key}}",
-								"type": "text"
-							},
-							{
-								"key": "X-Access-Token",
-								"value": "Bearer {{access_token}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"password\": \"{{$randomPassword}}\",\r\n    \"home_address\":{\r\n        \"region\": \"{{$randomCountry}}\",\r\n        \"city\": \"{{$randomCity}}\",\r\n        \"street\": \"{{$randomStreetName}}\"\r\n    }\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/members/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"members",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list members",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "X-Api-key",
-								"value": "{{api_key}}",
-								"type": "text"
-							},
-							{
-								"key": "X-Access-Token",
-								"value": "Bearer {{access_token}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/members/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"members",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update member",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "X-Api-Key",
-								"value": "{{api_key}}",
-								"type": "text"
-							},
-							{
-								"key": "X-Access-Token",
-								"value": "Bearer {{access_token}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"password\": \"{{$randomPassword}}\",\r\n    \"home_address\":{\r\n        \"region\": \"{{$randomCountry}}\",\r\n        \"city\": \"{{$randomCity}}\",\r\n        \"street\": \"{{$randomStreetName}}\"\r\n    }\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/members/13/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"members",
-								"13",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete member",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "X-Api-Key",
-								"value": "{{api_key}}",
-								"type": "text"
-							},
-							{
-								"key": "X-Access-Token",
-								"value": "Bearer {{access_token}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/members/2/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"members",
-								"2",
-								""
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Sellers",
 			"item": [
 				{
@@ -661,6 +496,12 @@
 								"key": "X-Access-Token",
 								"value": "Bearer {{access_token}}",
 								"type": "text"
+							},
+							{
+								"key": "status",
+								"value": "Pending",
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": {
@@ -677,6 +518,13 @@
 								"api",
 								"items",
 								""
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "Running",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -700,7 +548,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"{{$randomVerb}}\",\r\n    \"description\": \"{{$randomLoremParagraph}}\",\r\n    \"starting_bid\": 1000,\r\n    \"bidding_increment\": 100,\r\n    \"start_date\": \"2023-07-05T00:00\",\r\n    \"end_date\": \"2023-07-06T00:00\",\r\n    \"category\": \"Keyboards\",\r\n    \"seller\": \"{{randomSeller}}\"\r\n}",
+							"raw": "{\r\n    \"title\": \"{{$randomVerb}}\",\r\n    \"description\": \"{{$randomLoremParagraph}}\",\r\n    \"starting_bid\": 1000,\r\n    \"bidding_increment\": 100,\r\n    \"start_date\": \"2023-07-04T00:00\",\r\n    \"end_date\": \"2023-07-06T00:00\",\r\n    \"category\": \"Keyboards\",\r\n    \"seller\": \"{{randomSeller}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -906,6 +754,87 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "delete item",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{api_key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Access-Token",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/items/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"items",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update item",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{api_key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Access-Token",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    //\"title\": \"{{$randomVerb}}\",\r\n    //\"description\": \"{{$randomLoremParagraph}}\",\r\n    //\"starting_bid\": 1000,\r\n    //\"bidding_increment\": 100,\r\n    //\"start_date\": \"2023-07-04T00:00\",\r\n    \"end_date\": \"2023-07-04T00:00\"\r\n    //\"category\": \"Keyboards\",\r\n    //\"seller\": \"{{randomSeller}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/items/2/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"items",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1014,7 +943,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"buyer\": \"{{randomBuyer}}\",\r\n    \"item\": 7,\r\n    \"price\": 1800\r\n}",
+							"raw": "{\r\n    \"buyer\": \"{{randomBuyer}}\",\r\n    \"item\": 2,\r\n    \"price\": 2000\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1099,6 +1028,31 @@
 							"path": [
 								"api",
 								"winners",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete winner",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/winners/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"winners",
+								"1",
 								""
 							]
 						}

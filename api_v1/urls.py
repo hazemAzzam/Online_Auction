@@ -15,6 +15,7 @@ router.register('buyers', Buyer_View)
 router.register('items', Item_View)
 router.register('bids', Bid_View)
 router.register('categories', Category_View)
+router.register('winners', Winnder_View)
 
 urlpatterns = [
     path('', include(router.urls))

@@ -1,4 +1,3 @@
-from rest_framework.customs import ComplexSerializer
 from .models import *
 from member.serializers import *
 

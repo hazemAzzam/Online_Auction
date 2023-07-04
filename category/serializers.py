@@ -1,4 +1,4 @@
-from rest_framework.customs import ModelSerializer, CharField
+from rest_framework.serializers import ModelSerializer, CharField
 from .models import *
 
 class Category_Serializer(ModelSerializer):

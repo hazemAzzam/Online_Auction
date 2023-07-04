@@ -1,4 +1,4 @@
-from rest_framework.customs import  ModelSerializer
+from rest_framework.serializers import  ModelSerializer
 from .models import *
 
 class Item_Serializer(ModelSerializer):

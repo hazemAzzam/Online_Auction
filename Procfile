@@ -1,1 +1,1 @@
-web: gunicorn 'online_auction.wsgi'
+web: gunicorn 'Online_Auction.wsgi'

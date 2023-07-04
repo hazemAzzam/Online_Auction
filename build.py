@@ -1,6 +1,8 @@
 import os
 import codecs
 
+os.system("pip install -r requirements")
+
 # rm cache
 os.system("python rm_cache.py")
 

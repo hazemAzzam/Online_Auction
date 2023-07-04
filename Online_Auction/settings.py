@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework_api_key',
     'django_dump_load_utf8',
     'rest_framework',
+    'django_filters',
     'api_v1',
     'member',
     'address',
@@ -58,7 +59,11 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': ( 
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ]
+    
 }
 
 API_KEY_CUSTOM_HEADER = "HTTP_X_API_KEY"

@@ -5,12 +5,13 @@ from django.db.models import Max, Q
 from rest_framework.response import Response
 from rest_framework import status
 from django.utils import timezone
-
+from .filters import Items_Filter
 
 
 class Item_View(ModelViewSet):
     queryset=Item.objects.all()
     serializer_class=Item_Serializer
+    filterset_class=Items_Filter
 
     @action(detail=False, methods=['GET'])
     def running(self, request):

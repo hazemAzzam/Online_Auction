@@ -10,6 +10,26 @@ class Item_Serializer(ModelSerializer):
     class Meta:
         model=Item
         fields="__all__"
+        extra_kwargs = {
+            "title": {
+                "required": False,
+            },
+            "description": {
+                "required": False,
+            },
+            "starting_bid": {
+                "required": False,
+            },
+            "bidding_increment": {
+                "required": False,
+            },
+            "start_date": {
+                "required": False,
+            },
+            "seller": {
+                "required": False,
+            },
+        }
         
 
 class Bid_Serializer(ModelSerializer):
@@ -19,10 +39,24 @@ class Bid_Serializer(ModelSerializer):
         fields="__all__"
 
 class Winnder_Serializer(ModelSerializer):
-    seller = StringRelatedField()
-    buyer = StringRelatedField()
-    item = StringRelatedField()
+    seller_name = StringRelatedField(source="seller", read_only=True)
+    buyer_name = StringRelatedField(source="buyer", read_only=True)
+    item_title = StringRelatedField(source="item", read_only=True)
     final_price = FloatField(source="item.final_price", read_only=True)
     class Meta:
         model=Winner
         fields="__all__"
+        extra_kwargs= {
+            "seller": {
+                "write_only": True,
+            },
+            "buyer": {
+                "write_only": True,
+            },
+            "item": {
+                "write_only": True,
+            }
+        }
+    def create(self, validate_data):
+        winner, _ = Winner.objects.get_or_create(**validate_data)
+        return winner

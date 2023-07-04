@@ -2,6 +2,8 @@ import os
 import shutil
 
 # store data into json file
+if os.path.exists("data.json"):
+    os.remove("data.json")
 os.system("python manage.py dumpdatautf8 --output data.json")
 
 # get current project files and directories
